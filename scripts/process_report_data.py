@@ -216,6 +216,7 @@ def main(raw_report_file, city_file, output_file):
             "state",
             "date_time",
             "shape",
+            "country",
             "duration",
             "stats",
             "report_link",

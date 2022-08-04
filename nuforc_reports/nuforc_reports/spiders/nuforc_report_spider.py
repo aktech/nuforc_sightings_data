@@ -71,16 +71,16 @@ class NuforcReportSpider(scrapy.Spider):
                 if len(table_elements) > 1 else None
             state = table_elements[2].xpath('./text()').extract() \
                 if len(table_elements) > 2 else None
-            shape = table_elements[3].xpath('./text()').extract() \
+            country = table_elements[3].xpath('./text()').extract() \
                 if len(table_elements) > 3 else None
-            duration = table_elements[4].xpath('./text()').extract() \
+            shape = table_elements[4].xpath('./text()').extract() \
                 if len(table_elements) > 4 else None
-            summary = table_elements[5].xpath('./text()').extract() \
+            duration = table_elements[5].xpath('./text()').extract() \
                 if len(table_elements) > 5 else None
-            posted = table_elements[6].xpath('./text()').extract() \
+            summary = table_elements[6].xpath('./text()').extract() \
                 if len(table_elements) > 6 else None
-            images = table_elements[8].xpath('./text()').extract() \
-                if len(table_elements) > 8 else None
+            posted = table_elements[7].xpath('./text()').extract() \
+                if len(table_elements) > 7 else None
             # Passing the summary table contents as metadata so the report 
             # request has access.
             rlink = "http://www.nuforc.org/webreports/{}".format(
@@ -94,6 +94,7 @@ class NuforcReportSpider(scrapy.Spider):
                         "report_link": rlink,
                         "city": city[0] if city else None,
                         "state": state[0] if state else None,
+                        "country": country[0] if country else None,
                         "shape": shape[0] if shape else None,
                         "duration": duration[0] if duration else None,
                         "summary": summary[0] if summary else None,

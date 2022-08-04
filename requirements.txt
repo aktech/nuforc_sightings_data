@@ -6,3 +6,5 @@ toolz<1.0
 loguru
 dvc[gs]
 pandas
+tqdm
+s3fs

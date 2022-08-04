@@ -1,0 +1,28 @@
+name: NUFORC Scrapping pipeline
+on: [push]
+
+env:
+  FINAL_DATA_FILE: nuforc_reports_with_image_links.csv
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  scrape:
+    runs-on: self-hosted
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4.0.0
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Debugging with tmate
+        uses: mxschmitt/action-tmate@v3.11
+
+      - name: Run scrapping
+        run: |
+          dvc repro

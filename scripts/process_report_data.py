@@ -223,6 +223,7 @@ def main(raw_report_file, city_file, output_file):
             "posted",
             "city_latitude",
             "city_longitude",
+            "images",
         ],
     )
 

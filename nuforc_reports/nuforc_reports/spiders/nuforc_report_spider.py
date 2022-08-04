@@ -8,7 +8,7 @@ class NuforcReportSpider(scrapy.Spider):
     allowed_domains = ['www.nuforc.org']
     start_urls = ['http://www.nuforc.org/webreports/ndxpost.html']
 
-    def __init__(self, start_date="06/22/2022", stop_date=None, *args, **kwargs):
+    def __init__(self, start_date=None, stop_date=None, *args, **kwargs):
         self.start_date = \
             datetime.strptime(start_date, '%m/%d/%Y') \
             if start_date else None
